@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>امیر محمد جوادزاده | برنامه‌نویس و توسعه‌دهنده</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./media/assets_task_01k5gpw2vjee892xvs76smzgm8_1758276305_img_1.webp"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* تعریف متغیرهای رنگ */
+      :root {
+        --dark-bg: #0a0a0a;
+        --darker-bg: #050505;
+        --card-bg: #151515;
+        --text-color: #f0f0f0;
+        --accent-red: #ff0055;
+        --accent-green: #00ff99;
+        --accent-blue: #0099ff;
+        --accent-purple: #cc00ff;
+      }
+
+      /* استایل‌های پایه */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Vazirmatn", sans-serif;
+      }
+
+      body {
+        background-color: var(--dark-bg);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+        background-image: radial-gradient(
+            circle at 10% 20%,
+            rgba(255, 0, 85, 0.05) 0%,
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 90% 60%,
+            rgba(0, 255, 153, 0.05) 0%,
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 50% 80%,
+            rgba(0, 153, 255, 0.05) 0%,
+            transparent 20%
+          );
+      }
+
+      /* ریسپانسیو کردن فونت‌ها */
+      html {
+        font-size: 14px;
+      }
+
+      @media (min-width: 768px) {
+        html {
+          font-size: 16px;
+        }
+      }
+
+      /* استایل‌های بخش‌ها */
+      section {
+        padding: 4rem 1rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* استایل هدر و نویگیشن */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        background: linear-gradient(
+          45deg,
+          var(--accent-red),
+          var(--accent-purple)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 10px rgba(204, 0, 255, 0.3);
+      }
+
+      .nav-links {
+        display: flex;
+        flex-direction: row-reverse;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 2rem;
+      }
+
+      .nav-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        transition: color 0.3s;
+        font-weight: 500;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-green);
+      }
+
+      /* استایل بخش هیرو */
+      #home {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        z-index: 2;
+        position: relative;
+      }
+
+      .hero-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 2rem;
+        border: 3px solid transparent;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(
+          45deg,
+          var(--accent-red),
+          var(--accent-green),
+          var(--accent-blue)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: #ccc;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background: linear-gradient(
+          45deg,
+          var(--accent-red),
+          var(--accent-purple)
+        );
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 0 15px rgba(204, 0, 255, 0.5);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px rgba(204, 0, 255, 0.7);
+      }
+
+      /* استایل بخش درباره من */
+      #about {
+        background-color: var(--darker-bg);
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        position: relative;
+        display: inline-block;
+        align-self: center;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(
+          45deg,
+          var(--accent-red),
+          var(--accent-blue)
+        );
+      }
+
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .skill-card {
+        background-color: var(--card-bg);
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .skill-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-red),
+          var(--accent-blue)
+        );
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .java-icon {
+        color: #f89820;
+      }
+      .python-icon {
+        color: #3776ab;
+      }
+      .javascript-icon {
+        color: #f7df1e;
+      }
+      .android-icon {
+        color: #3ddc84;
+      }
+      .html-icon {
+        color: #e34f26;
+      }
+      .css-icon {
+        color: #1572b6;
+      }
+      .postgres-icon {
+        color: #336791;
+      }
+      .javafx-icon {
+        color: #ff0055;
+      }
+      .springboot-icon {
+        color: #6db33f;
+      }
+      .django-icon {
+        color: #092e20;
+      }
+      .nodejs-icon {
+        color: #339933;
+      }
+      .react-icon {
+        color: #61dafb;
+      }
+
+      .skill-name {
+        font-weight: bold;
+        margin-top: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      /* استایل بخش پروژه‌ها */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .projects-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .projects-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .project-card {
+        background-color: var(--card-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 0, 85, 0.1),
+          rgba(0, 153, 255, 0.1)
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 1;
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .project-content {
+        padding: 1.5rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .project-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--accent-green);
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      .tech-tag {
+        background: linear-gradient(
+          45deg,
+          var(--accent-red),
+          var(--accent-purple)
+        );
+        color: white;
+        padding: 0.3rem 0.7rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+      }
+
+      /* استایل بخش تماس */
+      #contact {
+        background-color: var(--darker-bg);
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .contact-container {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .contact-form {
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--accent-green);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        color: var(--text-color);
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-blue);
+      }
+
+      .submit-btn {
+        background: linear-gradient(
+          45deg,
+          var(--accent-red),
+          var(--accent-purple)
+        );
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(204, 0, 255, 0.5);
+      }
+
+      .contact-info {
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          45deg,
+          var(--accent-red),
+          var(--accent-purple)
+        );
+        border-radius: 50%;
+        margin-left: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .contact-details {
+        flex: 1;
+      }
+
+      .contact-details h3 {
+        margin-bottom: 0.3rem;
+        color: var(--accent-green);
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          var(--accent-red),
+          var(--accent-purple)
+        );
+        color: white;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .social-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(204, 0, 255, 0.5);
+      }
+
+      /* استایل فوتر */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* انیمیشن‌ها */
+      @keyframes rgbLight {
+        0% {
+          box-shadow: 0 0 10px var(--accent-red);
+        }
+        33% {
+          box-shadow: 0 0 15px var(--accent-green);
+        }
+        66% {
+          box-shadow: 0 0 15px var(--accent-blue);
+        }
+        100% {
+          box-shadow: 0 0 10px var(--accent-red);
+        }
+      }
+
+      .rgb-effect {
+        animation: rgbLight 5s infinite;
+      }
+
+      /* ریسپانسیو منو - تغییرات اصلی اینجا اعمال شده */
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        order: 2; /* تغییر ترتیب در حالت موبایل */
+      }
+
+      .menu-toggle span {
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(
+          45deg,
+          var(--accent-red),
+          var(--accent-purple)
+        );
+        border-radius: 5px;
+        transition: all 0.3s;
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: row-reverse; /* تغییر جهت برای قرارگیری لوگو در سمت راست */
+          justify-content: space-between;
+        }
+
+        .logo {
+          order: 1; /* لوگو در سمت راست قرار می‌گیرد */
+        }
+
+        .menu-toggle {
+          display: flex;
+          order: 2; /* منو در سمت چپ قرار می‌گیرد */
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: -100%; /* تغییر از right به left */
+          flex-direction: column;
+          background-color: var(--darker-bg);
+          width: 100%;
+          text-align: center;
+          transition: left 0.3s; /* تغییر از right به left */
+          padding: 2rem 0;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links.active {
+          left: 0; /* تغییر از right به left */
+        }
+
+        .nav-links li {
+          margin: 1.5rem 0;
+        }
+
+        /* معکوس کردن ترتیب آیتم‌های منو برای نمایش صحیح */
+        .nav-links {
+          flex-direction: column-reverse;
+        }
+
+        .hero-title {
+          font-size: 2.2rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .skills-container {
+          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        }
+
+        .contact-item {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .contact-icon {
+          margin-left: 0;
+          margin-bottom: 0.5rem;
+        }
+      }
+    </style>
+    <!-- فونت وزیرمتن -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+    />
+  </head>
+  <body>
+    <!-- هدر و نویگیشن -->
+    <header>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#contact">تماس با من</a></li>
+          <li><a href="#projects">پروژه‌ها</a></li>
+          <li><a href="#about">درباره من</a></li>
+          <li><a href="#home">خانه</a></li>
+        </ul>
+        <div class="logo">AMJ</div>
+        <button class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- بخش اصلی (Hero) -->
+    <section id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-image rgb-effect">
+            <img
+              src="./media/profile.png"
+              alt="امیر محمد جوادزاده"
+              class="profile-image"
+            />
+          </div>
+          <h1 class="hero-title">امیر محمد جوادزاده</h1>
+          <p class="hero-subtitle">
+            برنامه‌نویس و توسعه‌دهنده بک‌اند و اندروید
+          </p>
+          <p class="hero-subtitle">دانشجوی مهندسی کامپیوتر در دانشگاه تبریز</p>
+          <a href="#projects" class="cta-button">پروژه‌های من</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- بخش درباره من -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">درباره من</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>
+              سلام، من امیرمحمد جوادزاده هستم؛ دانشجوی مهندسی کامپیوتر در
+              دانشگاه تبریز و یک برنامه‌نویس پرانرژی و خلاق با تمرکز اصلی بر
+              توسعه وب و اپلیکیشن‌های اندروید. علاقه‌مندم در دنیای فناوری،
+              ایده‌ها را به محصولاتی کاربردی و ارزشمند تبدیل کنم.
+            </h3>
+            <h3>
+              چالش‌های برنامه‌نویسی برای من مثل یک پازل هیجان‌انگیز هستند؛ حل
+              آن‌ها نه‌تنها توانایی‌های فنی‌ام را تقویت می‌کند، بلکه فرصتی برای
+              خلاقیت و نوآوری نیز فراهم می‌آورد. هدفم این است که با خلق
+              راه‌حل‌های هوشمندانه، تجربه کاربری بهتر و نرم‌افزارهایی کارآمدتر
+              بسازم.
+            </h3>
+          </div>
+
+          <div class="skills-container">
+            <div class="skill-card">
+              <div class="skill-icon java-icon">
+                <i class="fab fa-java"></i>
+              </div>
+              <div class="skill-name">Java</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon python-icon">
+                <i class="fab fa-python"></i>
+              </div>
+              <div class="skill-name">Python</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon javascript-icon">
+                <i class="fab fa-js-square"></i>
+              </div>
+              <div class="skill-name">JavaScript</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon android-icon">
+                <i class="fab fa-android"></i>
+              </div>
+              <div class="skill-name">Android</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon html-icon">
+                <i class="fab fa-html5"></i>
+              </div>
+              <div class="skill-name">HTML5</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon css-icon">
+                <i class="fab fa-css3-alt"></i>
+              </div>
+              <div class="skill-name">CSS3</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon postgres-icon">
+                <i class="fas fa-database"></i>
+              </div>
+              <div class="skill-name">PostgreSQL</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon javafx-icon">
+                <i class="fas fa-window-maximize"></i>
+              </div>
+              <div class="skill-name">JavaFX</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon springboot-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="skill-name">Spring Boot</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon django-icon">
+                <i class="fab fa-python"></i>
+              </div>
+              <div class="skill-name">Django</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon nodejs-icon">
+                <i class="fab fa-node-js"></i>
+              </div>
+              <div class="skill-name">Node.js</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-icon react-icon">
+                <i class="fab fa-react"></i>
+              </div>
+              <div class="skill-name">React</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- بخش پروژه‌ها -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">پروژه‌های من</h2>
+        <div class="projects-grid">
+          <!-- پروژه ۱ -->
+          <div class="project-card">
+            <img
+              src="./media/project1.jpg"
+              alt="سیستم فروشگاه آنلاین"
+              class="project-image"
+            />
+            <div class="project-content">
+              <h3 class="project-title">سیستم فروشگاه آنلاین</h3>
+              <p>
+                یک اپلیکیشن دسکتاپ برای مدیریت فروشگاه آنلاین با استفاده از
+                JavaFX.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">JavaFX</span>
+                <span class="tech-tag">fxml</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- پروژه ۲ -->
+          <div class="project-card">
+            <img
+              src="./media/project2.jpg"
+              alt="شبیه‌ساز اینترنت بانک"
+              class="project-image"
+            />
+            <div class="project-content">
+              <h3 class="project-title">شبیه‌ساز اینترنت بانک</h3>
+              <p>
+                یک سیستم بانکی دسکتاپ که امکانات اصلی بانکداری آنلاین را فراهم
+                می‌کند.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">JavaFX</span>
+                <span class="tech-tag">fxml</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- پروژه ۳ -->
+          <div class="project-card">
+            <img
+              src="./media/project3.jpg"
+              alt="سامانه مدیریت انبار و فروش"
+              class="project-image"
+            />
+            <div class="project-content">
+              <h3 class="project-title">سامانه مدیریت انبار و فروش</h3>
+              <p>یک سیستم تحت وب برای مدیریت موجودی انبار و فرآیندهای فروش.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">Spring Boot</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- پروژه ۵ -->
+          <div class="project-card">
+            <img
+              src="./media/project5.jpg"
+              alt="اپلیکیشن آموزش زبان انگلیسی"
+              class="project-image"
+            />
+            <div class="project-content">
+              <h3 class="project-title">اپلیکیشن آموزش زبان انگلیسی</h3>
+              <p>یک ابزار آموزشی برای یادگیری واژگان و گرامر زبان انگلیسی.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Android</span>
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">xml</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- بخش تماس با من -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">تماس با من</h2>
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h3>ایمیل</h3>
+                <p>amir.m.jvd.1.1@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-telegram"></i>
+              </div>
+              <div class="contact-details">
+                <h3>تلگرام</h3>
+                <p>@Amirmjavadzadeh</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <div class="contact-details">
+                <h3>گیت‌هاب</h3>
+                <p>https://github.com/AmirMJvd</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/AmirMJvd" class="social-link"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="mailto:amir.m.jvd.1.1@gmail.com" class="social-link"
+            ><i class="fas fa-envelope"></i
+          ></a>
+          <a href="https://t.me/Amirmjavadzadeh" class="social-link"
+            ><i class="fab fa-telegram"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer>
+      <div class="container">
+        <p>© 2025 طراحی شده توسط امیر محمد جوادزاده</p>
+      </div>
+    </footer>
+
+    <!-- اسکریپت‌های جاوااسکریプト -->
+    <script>
+      // منوی موبایل
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // بستن منو با کلیک روی لینک‌ها
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // فرم تماس
+      document
+        .getElementById("contactForm")
+        ?.addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("پیام شما با موفقیت ارسال شد!");
+          this.reset();
+        });
+
+      // انیمیشن اسکرول
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // حذف پس زمینه سفید از عکس پروفایل
+      function removeWhiteBackground() {
+        const profileImg = document.querySelector(".profile-image");
+        if (profileImg) {
+          profileImg.style.mixBlendMode = "multiply";
+          profileImg.style.backgroundColor = "transparent";
+        }
+      }
+
+      // اجرای تابع پس از لود صفحه
+      window.addEventListener("load", removeWhiteBackground);
+    </script>
+  </body>
+</html>
