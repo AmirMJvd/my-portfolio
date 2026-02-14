@@ -1,375 +1,439 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>امیر محمد جوادزاده | برنامه‌نویس و توسعه‌دهنده</title>
+    <title>امیر محمد جوادزاده</title>
+    <!-- آیکون تب -->
     <link
       rel="icon"
       type="image/x-icon"
       href="./media/assets_task_01k5gpw2vjee892xvs76smzgm8_1758276305_img_1.webp"
     />
+    <!-- فونت آیکون FontAwesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- فونت آیکون Devicon -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <!-- فونت وزیرمتن -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+    />
 
     <style>
-      /* تعریف متغیرهای رنگ */
+      /* --- متغیرهای رنگی گیمینگ --- */
       :root {
-        --dark-bg: #0a0a0a;
-        --darker-bg: #050505;
-        --card-bg: #151515;
-        --text-color: #f0f0f0;
-        --accent-red: #ff0055;
-        --accent-green: #00ff99;
-        --accent-blue: #0099ff;
-        --accent-purple: #cc00ff;
+        --bg-color: #050505;
+        --card-bg: rgba(20, 20, 20, 0.7);
+        --neon-purple: #bc13fe;
+        --neon-blue: #00f0ff;
+        --neon-green: #0aff0a;
+        --text-main: #ffffff;
+        --text-dim: #a0a0a0;
+        --grid-line: rgba(0, 240, 255, 0.05);
       }
 
-      /* استایل‌های پایه */
+      /* --- تنظیمات پایه و اسکرول بار --- */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: "Vazirmatn", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-color);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(var(--neon-purple), var(--neon-blue));
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--neon-green);
       }
 
       body {
-        background-color: var(--dark-bg);
-        color: var(--text-color);
-        line-height: 1.6;
+        background-color: var(--bg-color);
+        color: var(--text-main);
         overflow-x: hidden;
-        background-image: radial-gradient(
-            circle at 10% 20%,
-            rgba(255, 0, 85, 0.05) 0%,
-            transparent 20%
-          ),
-          radial-gradient(
-            circle at 90% 60%,
-            rgba(0, 255, 153, 0.05) 0%,
-            transparent 20%
-          ),
-          radial-gradient(
-            circle at 50% 80%,
-            rgba(0, 153, 255, 0.05) 0%,
-            transparent 20%
-          );
+        background-image:
+          linear-gradient(var(--grid-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+        background-size: 40px 40px;
+        position: relative;
       }
 
-      /* ریسپانسیو کردن فونت‌ها */
-      html {
-        font-size: 14px;
-      }
-
-      @media (min-width: 768px) {
-        html {
-          font-size: 16px;
-        }
-      }
-
-      /* استایل‌های بخش‌ها */
-      section {
-        padding: 4rem 1rem;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
+      body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, transparent 40%, #000 100%);
+        pointer-events: none;
+        z-index: -1;
       }
 
-      /* استایل هدر و نویگیشن */
+      /* --- هدر و نویگیشن --- */
       header {
         position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;
-        background-color: rgba(10, 10, 10, 0.8);
+        background: rgba(5, 5, 5, 0.85);
         backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 2px solid var(--neon-purple);
+        box-shadow: 0 0 15px rgba(188, 19, 254, 0.3);
       }
 
       nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 2rem;
+        padding: 1rem 5%;
+        max-width: 1400px;
+        margin: 0 auto;
       }
 
       .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        background: linear-gradient(
-          45deg,
-          var(--accent-red),
-          var(--accent-purple)
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: 0 0 10px rgba(204, 0, 255, 0.3);
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: var(--neon-blue);
+        text-shadow: 0 0 10px var(--neon-blue);
+        letter-spacing: 2px;
+        position: relative;
+      }
+
+      .logo span {
+        color: var(--neon-purple);
       }
 
       .nav-links {
         display: flex;
-        flex-direction: row-reverse;
         list-style: none;
-      }
-
-      .nav-links li {
-        margin-left: 2rem;
+        gap: 2rem;
       }
 
       .nav-links a {
-        color: var(--text-color);
+        color: var(--text-main);
         text-decoration: none;
-        transition: color 0.3s;
-        font-weight: 500;
+        font-weight: bold;
+        position: relative;
+        padding: 5px 10px;
+        transition: 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .nav-links a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background: var(--neon-green);
+        transition: width 0.3s ease;
+        box-shadow: 0 0 8px var(--neon-green);
       }
 
       .nav-links a:hover {
-        color: var(--accent-green);
+        color: var(--neon-green);
+        text-shadow: 0 0 8px var(--neon-green);
       }
 
-      /* استایل بخش هیرو */
-      #home {
-        position: relative;
-        overflow: hidden;
+      .nav-links a:hover::before {
+        width: 100%;
+      }
+
+      /* --- بخش هیرو (Hero) --- */
+      section {
+        padding: 6rem 1rem;
+        /* min-height: 100vh; */ /* تغییر: برای اینکه فاصله زیاد نشود در بخش‌های کوچک، این را کامنت کردم یا می‌توان عدد کمتری داد */
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         text-align: center;
-        z-index: 2;
+        z-index: 1;
         position: relative;
       }
 
-      .hero-image {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        margin-bottom: 2rem;
-        border: 3px solid transparent;
+      .profile-wrapper {
+        position: relative;
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
-      .hero-image img {
+      .profile-ring {
+        position: absolute;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        border: 2px dashed var(--neon-blue);
         border-radius: 50%;
+        animation: spin 10s linear infinite;
+        box-shadow: 0 0 15px var(--neon-blue);
+      }
+
+      .profile-ring::after {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        border-top-color: var(--neon-purple);
+        border-bottom-color: var(--neon-green);
+        animation: spin-reverse 7s linear infinite;
       }
 
       .profile-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        width: 190px;
+        height: 190px;
         border-radius: 50%;
+        object-fit: cover;
+        background: #111;
+        position: relative;
+        z-index: 2;
+        border: 3px solid var(--text-main);
+      }
+
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spin-reverse {
+        100% {
+          transform: rotate(-360deg);
+        }
+      }
+
+      .glitch-wrapper {
+        position: relative;
+        display: inline-block;
       }
 
       .hero-title {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        background: linear-gradient(
-          45deg,
-          var(--accent-red),
-          var(--accent-green),
-          var(--accent-blue)
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin-bottom: 0.5rem;
+        color: #fff;
+        position: relative;
+        text-shadow:
+          2px 2px 0px var(--neon-purple),
+          -2px -2px 0px var(--neon-blue);
       }
 
       .hero-subtitle {
         font-size: 1.5rem;
+        color: var(--neon-blue);
         margin-bottom: 2rem;
-        color: #ccc;
+        font-weight: 300;
+        text-shadow: 0 0 5px var(--neon-blue);
+        letter-spacing: 1px;
       }
 
       .cta-button {
         display: inline-block;
-        padding: 0.8rem 2rem;
-        background: linear-gradient(
-          45deg,
-          var(--accent-red),
-          var(--accent-purple)
-        );
-        color: white;
+        padding: 1rem 3rem;
+        background: transparent;
+        color: var(--neon-green);
         text-decoration: none;
-        border-radius: 30px;
         font-weight: bold;
-        transition: transform 0.3s, box-shadow 0.3s;
-        box-shadow: 0 0 15px rgba(204, 0, 255, 0.5);
+        font-size: 1.2rem;
+        border: 2px solid var(--neon-green);
+        position: relative;
+        overflow: hidden;
+        transition: 0.3s;
+        text-transform: uppercase;
+        clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        box-shadow: 0 0 10px rgba(10, 255, 10, 0.2);
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--neon-green);
+        transition: 0.4s;
+        z-index: -1;
       }
 
       .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 20px rgba(204, 0, 255, 0.7);
+        color: #000;
+        box-shadow: 0 0 25px var(--neon-green);
+      }
+      .cta-button:hover::before {
+        left: 0;
       }
 
-      /* استایل بخش درباره من */
-      #about {
-        background-color: var(--darker-bg);
-      }
-
+      /* --- عناوین بخش‌ها --- */
       .section-title {
         font-size: 2.5rem;
+        color: var(--text-main);
         margin-bottom: 3rem;
         text-align: center;
+        text-transform: uppercase;
         position: relative;
         display: inline-block;
-        align-self: center;
       }
 
       .section-title::after {
         content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 3px;
-        background: linear-gradient(
-          45deg,
-          var(--accent-red),
-          var(--accent-blue)
-        );
+        display: block;
+        width: 60%;
+        height: 4px;
+        background: var(--neon-purple);
+        margin: 10px auto 0;
+        box-shadow: 0 0 10px var(--neon-purple);
+        border-radius: 2px;
       }
 
+      .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      /* --- کارت‌های مهارت --- */
       .skills-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1.5rem;
-        margin-top: 2rem;
       }
 
       .skill-card {
-        background-color: var(--card-bg);
-        padding: 1.5rem;
-        border-radius: 10px;
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
+        background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: 0.3s;
+        backdrop-filter: blur(5px);
         position: relative;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
       }
 
-      .skill-card::before {
+      .skill-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--neon-blue);
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+      }
+
+      .skill-icon {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+        transition: 0.3s;
+      }
+
+      .skill-card:hover .skill-icon {
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        transform: scale(1.1);
+      }
+
+      .skill-name {
+        font-weight: bold;
+        color: var(--text-main);
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+      }
+
+      .skill-level {
+        width: 100%;
+        margin-top: auto;
+        direction: ltr;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 5px;
+      }
+
+      .progress-bar::after {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 3px;
+        height: 100%;
+        width: 0;
         background: linear-gradient(
           90deg,
-          var(--accent-red),
-          var(--accent-blue)
+          var(--neon-purple),
+          var(--neon-blue)
         );
+        border-radius: 4px;
+        animation: fillProgress 1.5s ease-out forwards;
+        box-shadow: 0 0 10px var(--neon-blue);
       }
 
-      .skill-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      @keyframes fillProgress {
+        to {
+          width: var(--progress-width);
+        }
       }
 
-      .skill-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: rgba(0, 0, 0, 0.2);
-      }
-
-      .java-icon {
-        color: #f89820;
-      }
-      .python-icon {
-        color: #3776ab;
-      }
-      .javascript-icon {
-        color: #f7df1e;
-      }
-      .android-icon {
-        color: #3ddc84;
-      }
-      .html-icon {
-        color: #e34f26;
-      }
-      .css-icon {
-        color: #1572b6;
-      }
-      .postgres-icon {
-        color: #336791;
-      }
-      .javafx-icon {
-        color: #ff0055;
-      }
-      .springboot-icon {
-        color: #6db33f;
-      }
-      .django-icon {
-        color: #092e20;
-      }
-      .nodejs-icon {
-        color: #339933;
-      }
-      .react-icon {
-        color: #61dafb;
-      }
-
-      .skill-name {
+      .level-text {
+        display: block;
+        text-align: right;
+        font-size: 0.85rem;
+        color: var(--neon-green);
         font-weight: bold;
-        margin-top: 0.5rem;
-        font-size: 1.1rem;
+        text-shadow: 0 0 5px rgba(10, 255, 10, 0.5);
       }
 
-      /* استایل بخش پروژه‌ها */
+      /* --- کارت‌های پروژه --- */
       .projects-grid {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
       }
 
-      @media (min-width: 768px) {
-        .projects-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (min-width: 1200px) {
-        .projects-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-
       .project-card {
-        background-color: var(--card-bg);
-        border-radius: 10px;
+        background: var(--card-bg);
+        border-radius: 0;
+        border: 1px solid #333;
         overflow: hidden;
-        transition: transform 0.3s, box-shadow 0.3s;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: 0.4s;
         position: relative;
-      }
-
-      .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
       }
 
       .project-card::before {
@@ -377,559 +441,563 @@
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
+        width: 100%;
+        height: 3px;
         background: linear-gradient(
-          45deg,
-          rgba(255, 0, 85, 0.1),
-          rgba(0, 153, 255, 0.1)
+          90deg,
+          var(--neon-purple),
+          var(--neon-blue)
         );
-        opacity: 0;
-        transition: opacity 0.3s;
-        z-index: 1;
+        z-index: 5;
       }
 
-      .project-card:hover::before {
-        opacity: 1;
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--neon-purple);
+        box-shadow: 0 10px 30px rgba(188, 19, 254, 0.2);
+      }
+
+      .project-image-container {
+        overflow: hidden;
+        height: 200px;
       }
 
       .project-image {
         width: 100%;
-        height: 200px;
+        height: 100%;
         object-fit: cover;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: 0.5s;
+      }
+
+      .project-card:hover .project-image {
+        transform: scale(1.1);
+        filter: contrast(1.2);
       }
 
       .project-content {
         padding: 1.5rem;
-        position: relative;
-        z-index: 2;
       }
 
       .project-title {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        color: var(--neon-blue);
         margin-bottom: 0.5rem;
-        color: var(--accent-green);
       }
 
       .project-tech {
+        margin-top: 1rem;
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
-        margin: 1rem 0;
       }
 
       .tech-tag {
-        background: linear-gradient(
-          45deg,
-          var(--accent-red),
-          var(--accent-purple)
-        );
-        color: white;
-        padding: 0.3rem 0.7rem;
-        border-radius: 20px;
         font-size: 0.8rem;
+        padding: 0.2rem 0.8rem;
+        border: 1px solid var(--neon-green);
+        color: var(--neon-green);
+        border-radius: 4px;
+        background: rgba(10, 255, 10, 0.1);
       }
 
-      /* استایل بخش تماس */
-      #contact {
-        background-color: var(--darker-bg);
-      }
-
+      /* --- تماس با من --- */
       .contact-container {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
-      }
-
-      @media (min-width: 768px) {
-        .contact-container {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      .contact-form {
-        background-color: var(--card-bg);
+        background: rgba(20, 20, 20, 0.5);
         padding: 2rem;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--grid-line);
+        position: relative;
       }
 
-      .form-group {
-        margin-bottom: 1.5rem;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: var(--accent-green);
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 0.8rem;
-        background-color: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 5px;
-        color: var(--text-color);
-        transition: border-color 0.3s;
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: var(--accent-blue);
-      }
-
-      .submit-btn {
-        background: linear-gradient(
-          45deg,
-          var(--accent-red),
-          var(--accent-purple)
-        );
-        color: white;
-        border: none;
-        padding: 0.8rem 2rem;
-        border-radius: 30px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-
-      .submit-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(204, 0, 255, 0.5);
-      }
-
-      .contact-info {
-        background-color: var(--card-bg);
-        padding: 2rem;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+      .contact-container::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        right: -5px;
+        width: 20px;
+        height: 20px;
+        border-bottom: 2px solid var(--neon-blue);
+        border-right: 2px solid var(--neon-blue);
       }
 
       .contact-item {
         display: flex;
         align-items: center;
-        margin-bottom: 1.5rem;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 1rem;
+        border-left: 3px solid var(--neon-purple);
+        transition: 0.3s;
+      }
+
+      .contact-item:hover {
+        background: rgba(188, 19, 254, 0.1);
+        padding-right: 1.5rem;
       }
 
       .contact-icon {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(
-          45deg,
-          var(--accent-red),
-          var(--accent-purple)
-        );
-        border-radius: 50%;
+        font-size: 1.5rem;
+        color: var(--neon-purple);
         margin-left: 1rem;
-        font-size: 1.2rem;
-      }
-
-      .contact-details {
-        flex: 1;
       }
 
       .contact-details h3 {
-        margin-bottom: 0.3rem;
-        color: var(--accent-green);
+        color: var(--text-dim);
+        font-size: 0.9rem;
+      }
+      .contact-details p {
+        font-family: monospace;
+        color: #fff;
+        font-size: 1.1rem;
       }
 
       .social-links {
         display: flex;
         justify-content: center;
-        gap: 1.5rem;
-        margin-top: 2rem;
+        gap: 2rem;
+        margin-top: 3rem;
       }
 
       .social-link {
-        display: inline-flex;
-        align-items: center;
+        width: 60px;
+        height: 60px;
+        display: flex;
         justify-content: center;
-        width: 50px;
-        height: 50px;
+        align-items: center;
+        font-size: 1.8rem;
+        color: var(--bg-color);
+        background: var(--text-main);
         border-radius: 50%;
-        background: linear-gradient(
-          45deg,
-          var(--accent-red),
-          var(--accent-purple)
-        );
-        color: white;
-        text-decoration: none;
-        font-size: 1.5rem;
-        transition: transform 0.3s, box-shadow 0.3s;
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
       }
 
       .social-link:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(204, 0, 255, 0.5);
+        background: var(--neon-blue);
+        color: #fff;
+        transform: translateY(-5px) rotate(360deg);
+        box-shadow: 0 0 20px var(--neon-blue);
       }
 
-      /* استایل فوتر */
       footer {
         text-align: center;
         padding: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: #000;
+        border-top: 1px solid #333;
+        color: var(--text-dim);
+        font-size: 0.9rem;
       }
 
-      /* انیمیشن‌ها */
-      @keyframes rgbLight {
-        0% {
-          box-shadow: 0 0 10px var(--accent-red);
-        }
-        33% {
-          box-shadow: 0 0 15px var(--accent-green);
-        }
-        66% {
-          box-shadow: 0 0 15px var(--accent-blue);
-        }
-        100% {
-          box-shadow: 0 0 10px var(--accent-red);
-        }
-      }
-
-      .rgb-effect {
-        animation: rgbLight 5s infinite;
-      }
-
-      /* ریسپانسیو منو - تغییرات اصلی اینجا اعمال شده */
+      /* --- ریسپانسیو (موبایل) --- */
       .menu-toggle {
         display: none;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 30px;
-        height: 25px;
-        background: transparent;
+        background: none;
         border: none;
+        color: var(--neon-blue);
+        font-size: 1.8rem;
         cursor: pointer;
-        padding: 0;
-        order: 2; /* تغییر ترتیب در حالت موبایل */
-      }
-
-      .menu-toggle span {
-        width: 100%;
-        height: 3px;
-        background: linear-gradient(
-          45deg,
-          var(--accent-red),
-          var(--accent-purple)
-        );
-        border-radius: 5px;
-        transition: all 0.3s;
       }
 
       @media (max-width: 768px) {
-        nav {
-          flex-direction: row-reverse; /* تغییر جهت برای قرارگیری لوگو در سمت راست */
-          justify-content: space-between;
-        }
-
-        .logo {
-          order: 1; /* لوگو در سمت راست قرار می‌گیرد */
-        }
-
         .menu-toggle {
-          display: flex;
-          order: 2; /* منو در سمت چپ قرار می‌گیرد */
+          display: block;
         }
 
         .nav-links {
           position: fixed;
           top: 70px;
-          left: -100%; /* تغییر از right به left */
-          flex-direction: column;
-          background-color: var(--darker-bg);
+          left: -100%;
           width: 100%;
-          text-align: center;
-          transition: left 0.3s; /* تغییر از right به left */
-          padding: 2rem 0;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          height: calc(100vh - 70px);
+          background: rgba(5, 5, 5, 0.98);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+          border-right: 2px solid var(--neon-purple);
         }
 
         .nav-links.active {
-          left: 0; /* تغییر از right به left */
+          left: 0;
         }
 
         .nav-links li {
-          margin: 1.5rem 0;
-        }
-
-        /* معکوس کردن ترتیب آیتم‌های منو برای نمایش صحیح */
-        .nav-links {
-          flex-direction: column-reverse;
-        }
-
-        .hero-title {
-          font-size: 2.2rem;
-        }
-
-        .hero-subtitle {
-          font-size: 1.2rem;
-        }
-
-        .skills-container {
-          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        }
-
-        .contact-item {
-          flex-direction: column;
+          width: 100%;
           text-align: center;
         }
 
-        .contact-icon {
-          margin-left: 0;
-          margin-bottom: 0.5rem;
+        .nav-links a {
+          display: block;
+          padding: 1.5rem;
+          font-size: 1.5rem;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .contact-container {
+          grid-template-columns: 1fr;
         }
       }
     </style>
-    <!-- فونت وزیرمتن -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
-    />
   </head>
   <body>
-    <!-- هدر و نویگیشن -->
+    <!-- هدر -->
     <header>
       <nav>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#contact">تماس با من</a></li>
-          <li><a href="#projects">پروژه‌ها</a></li>
-          <li><a href="#about">درباره من</a></li>
-          <li><a href="#home">خانه</a></li>
-        </ul>
-        <div class="logo">AMJ</div>
         <button class="menu-toggle" id="menuToggle">
-          <span></span>
-          <span></span>
-          <span></span>
+          <i class="fas fa-bars"></i>
         </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">خانه</a></li>
+          <li><a href="#about">پروفایل</a></li>
+          <li><a href="#skills">مهارت‌ها</a></li>
+          <!-- لینک جدید اضافه شد -->
+          <li><a href="#projects">ماموریت‌ها</a></li>
+          <li><a href="#contact">ارتباط</a></li>
+        </ul>
+        <div class="logo">AMJ<span></span></div>
       </nav>
     </header>
 
-    <!-- بخش اصلی (Hero) -->
+    <!-- خانه -->
     <section id="home">
       <div class="container">
         <div class="hero-content">
-          <div class="hero-image rgb-effect">
+          <div class="profile-wrapper">
+            <div class="profile-ring"></div>
             <img
               src="./media/profile.png"
               alt="امیر محمد جوادزاده"
               class="profile-image"
             />
           </div>
-          <h1 class="hero-title">امیر محمد جوادزاده</h1>
-          <p class="hero-subtitle">
-            برنامه‌نویس و توسعه‌دهنده بک‌اند و اندروید
+          <div class="glitch-wrapper">
+            <h1 class="hero-title">امیر محمد جوادزاده</h1>
+          </div>
+          <p class="hero-subtitle">&lt; توسعه‌دهنده بک‌اند و اندروید /&gt;</p>
+          <p style="color: #aaa; margin-bottom: 2rem">
+            دانشجوی مهندسی کامپیوتر دانشگاه تبریز
           </p>
-          <p class="hero-subtitle">دانشجوی مهندسی کامپیوتر در دانشگاه تبریز</p>
-          <a href="#projects" class="cta-button">پروژه‌های من</a>
+          <a href="#projects" class="cta-button">شروع بازی</a>
         </div>
       </div>
     </section>
 
-    <!-- بخش درباره من -->
+    <!-- =========================== -->
+    <!-- بخش درباره من (جدا شده) -->
+    <!-- =========================== -->
     <section id="about">
       <div class="container">
         <h2 class="section-title">درباره من</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <h3>
-              سلام، من امیرمحمد جوادزاده هستم؛ دانشجوی مهندسی کامپیوتر در
-              دانشگاه تبریز و یک برنامه‌نویس پرانرژی و خلاق با تمرکز اصلی بر
-              توسعه وب و اپلیکیشن‌های اندروید. علاقه‌مندم در دنیای فناوری،
-              ایده‌ها را به محصولاتی کاربردی و ارزشمند تبدیل کنم.
-            </h3>
-            <h3>
-              چالش‌های برنامه‌نویسی برای من مثل یک پازل هیجان‌انگیز هستند؛ حل
-              آن‌ها نه‌تنها توانایی‌های فنی‌ام را تقویت می‌کند، بلکه فرصتی برای
-              خلاقیت و نوآوری نیز فراهم می‌آورد. هدفم این است که با خلق
-              راه‌حل‌های هوشمندانه، تجربه کاربری بهتر و نرم‌افزارهایی کارآمدتر
-              بسازم.
-            </h3>
+        <div
+          style="
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #ccc;
+          "
+        >
+          <h3>
+            سلام، من امیرمحمد جوادزاده هستم؛ دانشجوی مهندسی کامپیوتر در دانشگاه
+            تبریز و یک برنامه‌نویس پرانرژی و خلاق با تمرکز اصلی بر توسعه وب و
+            اپلیکیشن‌های اندروید. علاقه‌مندم در دنیای فناوری، ایده‌ها را به
+            محصولاتی کاربردی و ارزشمند تبدیل کنم.
+          </h3>
+          <h3>
+            چالش‌های برنامه‌نویسی برای من مثل یک پازل هیجان‌انگیز هستند؛ حل
+            آن‌ها نه‌تنها توانایی‌های فنی‌ام را تقویت می‌کند، بلکه فرصتی برای
+            خلاقیت و نوآوری نیز فراهم می‌آورد. هدفم این است که با خلق راه‌حل‌های
+            هوشمندانه، تجربه کاربری بهتر و نرم‌افزارهایی کارآمدتر بسازم.
+          </h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">مهارت‌های من</h2>
+
+        <div class="skills-container">
+          <!-- جاوا -->
+          <div class="skill-card" data-progress="90">
+            <div class="skill-icon java-icon">
+              <i class="devicon-java-plain-wordmark colored"></i>
+            </div>
+            <div class="skill-name">JAVA</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 90%"></div>
+              <span class="level-text">90%</span>
+            </div>
           </div>
 
-          <div class="skills-container">
-            <div class="skill-card">
-              <div class="skill-icon java-icon">
-                <i class="fab fa-java"></i>
-              </div>
-              <div class="skill-name">Java</div>
+          <!-- پایتون -->
+          <div class="skill-card" data-progress="60">
+            <div class="skill-icon python-icon">
+              <i class="devicon-python-plain-wordmark colored"></i>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon python-icon">
-                <i class="fab fa-python"></i>
-              </div>
-              <div class="skill-name">Python</div>
+            <div class="skill-name">PYTHON</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 60%"></div>
+              <span class="level-text">60%</span>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon javascript-icon">
-                <i class="fab fa-js-square"></i>
-              </div>
-              <div class="skill-name">JavaScript</div>
+          </div>
+
+          <!-- جاوااسکریپت -->
+          <div class="skill-card" data-progress="88">
+            <div class="skill-icon javascript-icon">
+              <i class="devicon-javascript-plain colored"></i>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon android-icon">
-                <i class="fab fa-android"></i>
-              </div>
-              <div class="skill-name">Android</div>
+            <div class="skill-name">JAVASCRIPT</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 88%"></div>
+              <span class="level-text">88%</span>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon html-icon">
-                <i class="fab fa-html5"></i>
-              </div>
-              <div class="skill-name">HTML5</div>
+          </div>
+
+          <!-- Node.js -->
+          <div class="skill-card" data-progress="72">
+            <div class="skill-icon nodejs-icon">
+              <i class="devicon-nodejs-plain-wordmark colored"></i>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon css-icon">
-                <i class="fab fa-css3-alt"></i>
-              </div>
-              <div class="skill-name">CSS3</div>
+            <div class="skill-name">NODE.JS</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 72%"></div>
+              <span class="level-text">72%</span>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon postgres-icon">
-                <i class="fas fa-database"></i>
-              </div>
-              <div class="skill-name">PostgreSQL</div>
+          </div>
+
+          <!-- Express.js -->
+          <div class="skill-card" data-progress="78">
+            <div class="skill-icon express-icon">
+              <i class="devicon-express-original colored"></i>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon javafx-icon">
-                <i class="fas fa-window-maximize"></i>
-              </div>
-              <div class="skill-name">JavaFX</div>
+            <div class="skill-name">EXPRESS.JS</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 78%"></div>
+              <span class="level-text">78%</span>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon springboot-icon">
-                <i class="fas fa-leaf"></i>
-              </div>
-              <div class="skill-name">Spring Boot</div>
+          </div>
+
+          <!-- NestJS -->
+          <div class="skill-card" data-progress="56">
+            <div class="skill-icon nestjs-icon">
+              <i class="devicon-nestjs-plain colored"></i>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon django-icon">
-                <i class="fab fa-python"></i>
-              </div>
-              <div class="skill-name">Django</div>
+            <div class="skill-name">NESTJS</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 56%"></div>
+              <span class="level-text">56%</span>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon nodejs-icon">
-                <i class="fab fa-node-js"></i>
-              </div>
-              <div class="skill-name">Node.js</div>
+          </div>
+
+          <!-- Spring Boot -->
+          <div class="skill-card" data-progress="65">
+            <div class="skill-icon springboot-icon">
+              <i class="devicon-spring-plain-wordmark colored"></i>
             </div>
-            <div class="skill-card">
-              <div class="skill-icon react-icon">
-                <i class="fab fa-react"></i>
-              </div>
-              <div class="skill-name">React</div>
+            <div class="skill-name">SPRING BOOT</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 65%"></div>
+              <span class="level-text">65%</span>
+            </div>
+          </div>
+
+          <!-- React -->
+          <div class="skill-card" data-progress="15">
+            <div class="skill-icon react-icon">
+              <i class="devicon-react-original-wordmark colored"></i>
+            </div>
+            <div class="skill-name">REACT</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 15%"></div>
+              <span class="level-text">15%</span>
+            </div>
+          </div>
+
+          <!-- Android -->
+          <div class="skill-card" data-progress="47">
+            <div class="skill-icon android-icon">
+              <i class="devicon-android-plain-wordmark colored"></i>
+            </div>
+            <div class="skill-name">ANDROID</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 47%"></div>
+              <span class="level-text">47%</span>
+            </div>
+          </div>
+
+          <!-- PostgreSQL -->
+          <div class="skill-card" data-progress="86">
+            <div class="skill-icon postgres-icon">
+              <i class="devicon-postgresql-plain-wordmark colored"></i>
+            </div>
+            <div class="skill-name">POSTGRESQL</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 86%"></div>
+              <span class="level-text">86%</span>
+            </div>
+          </div>
+
+          <!-- HTML5 -->
+          <div class="skill-card" data-progress="58">
+            <div class="skill-icon html-icon">
+              <i class="devicon-html5-plain-wordmark colored"></i>
+            </div>
+            <div class="skill-name">HTML5</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 58%"></div>
+              <span class="level-text">58%</span>
+            </div>
+          </div>
+
+          <!-- CSS3 -->
+          <div class="skill-card" data-progress="48">
+            <div class="skill-icon css-icon">
+              <i class="devicon-css3-plain-wordmark colored"></i>
+            </div>
+            <div class="skill-name">CSS3</div>
+            <div class="skill-level">
+              <div class="progress-bar" style="--progress-width: 48%"></div>
+              <span class="level-text">48%</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- بخش پروژه‌ها -->
+    <!-- پروژه‌ها -->
     <section id="projects">
       <div class="container">
-        <h2 class="section-title">پروژه‌های من</h2>
+        <h2 class="section-title">ماموریت‌های انجام شده</h2>
         <div class="projects-grid">
-          <!-- پروژه ۱ -->
           <div class="project-card">
-            <img
-              src="./media/project1.jpg"
-              alt="سیستم فروشگاه آنلاین"
-              class="project-image"
-            />
+            <div class="project-image-container">
+              <img
+                src="./media/project1.jpg"
+                class="project-image"
+                alt="Shop"
+              />
+            </div>
             <div class="project-content">
-              <h3 class="project-title">سیستم فروشگاه آنلاین</h3>
-              <p>
-                یک اپلیکیشن دسکتاپ برای مدیریت فروشگاه آنلاین با استفاده از
-                JavaFX.
+              <h3 class="project-title">فروشگاه آنلاین</h3>
+              <p style="color: #aaa; font-size: 0.9rem">
+                سیستم دسکتاپ مدیریت فروش با رابط کاربری مدرن.
               </p>
               <div class="project-tech">
-                <span class="tech-tag">Java</span>
                 <span class="tech-tag">JavaFX</span>
-                <span class="tech-tag">fxml</span>
+                <span class="tech-tag">FXML</span>
               </div>
             </div>
           </div>
 
-          <!-- پروژه ۲ -->
           <div class="project-card">
-            <img
-              src="./media/project2.jpg"
-              alt="شبیه‌ساز اینترنت بانک"
-              class="project-image"
-            />
+            <div class="project-image-container">
+              <img src="./media/project2.jpg" class="project-image" alt="WMS" />
+            </div>
             <div class="project-content">
               <h3 class="project-title">شبیه‌ساز اینترنت بانک</h3>
-              <p>
+              <p style="color: #aaa; font-size: 0.9rem">
                 یک سیستم بانکی دسکتاپ که امکانات اصلی بانکداری آنلاین را فراهم
                 می‌کند.
               </p>
               <div class="project-tech">
-                <span class="tech-tag">Java</span>
-                <span class="tech-tag">JavaFX</span>
-                <span class="tech-tag">fxml</span>
+                <span class="tech-tag">JAVA</span>
+                <span class="tech-tag">JAVAFX</span>
+                <span class="tech-tag">FXML</span>
               </div>
             </div>
           </div>
 
-          <!-- پروژه ۳ -->
           <div class="project-card">
-            <img
-              src="./media/project3.jpg"
-              alt="سامانه مدیریت انبار و فروش"
-              class="project-image"
-            />
+            <div class="project-image-container">
+              <img src="./media/project3.jpg" class="project-image" alt="WMS" />
+            </div>
             <div class="project-content">
-              <h3 class="project-title">سامانه مدیریت انبار و فروش</h3>
-              <p>یک سیستم تحت وب برای مدیریت موجودی انبار و فرآیندهای فروش.</p>
+              <h3 class="project-title">مدیریت انبار</h3>
+              <p style="color: #aaa; font-size: 0.9rem">
+                سامانه تحت وب فول استک برای مدیریت موجودی.
+              </p>
               <div class="project-tech">
-                <span class="tech-tag">Java</span>
                 <span class="tech-tag">Spring Boot</span>
                 <span class="tech-tag">React</span>
-                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Postgres</span>
               </div>
             </div>
           </div>
 
-          <!-- پروژه 4 -->
           <div class="project-card">
-            <img
-              src="./media/project4.jpg"
-              alt="سایت جست و جوی فیلم"
-              class="project-image"
-            />
-            <div class="project-content">
-              <h3 class="project-title">سایت معرفی و جست و جو فیلم</h3>
-              <p>یک ابزار برای جست و جوی فیلم و دیدن تریلر آن فیلم</p>
-              <div class="project-tech">
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">html</span>
-                <span class="tech-tag">css</span>
-              </div>
+            <div class="project-image-container">
+              <img src="./media/project5.jpg" class="project-image" alt="App" />
             </div>
-          </div>
-
-          <!-- پروژه ۵ -->
-          <div class="project-card">
-            <img
-              src="./media/project5.jpg"
-              alt="اپلیکیشن آموزش زبان انگلیسی"
-              class="project-image"
-            />
             <div class="project-content">
-              <h3 class="project-title">اپلیکیشن آموزش زبان انگلیسی</h3>
-              <p>یک ابزار آموزشی برای یادگیری واژگان و گرامر زبان انگلیسی.</p>
+              <h3 class="project-title">آموزش زبان</h3>
+              <p style="color: #aaa; font-size: 0.9rem">
+                اپلیکیشن اندروید برای یادگیری تعاملی زبان.
+              </p>
               <div class="project-tech">
                 <span class="tech-tag">Android</span>
                 <span class="tech-tag">Java</span>
-                <span class="tech-tag">xml</span>
+                <span class="tech-tag">XML</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image-container">
+              <img src="./media/project6.jpg" class="project-image" alt="WMS" />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">فال قهوه</h3>
+              <p style="color: #aaa; font-size: 0.9rem">
+                اپلیکیشن اندرویدی متصل به هوش مصنوعی برای تعبیر فال قهوه ،تعبیر
+                خواب ، کف بینی
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">JAVA</span>
+                <span class="tech-tag">ANDROID STUDIO</span>
+                <span class="tech-tag">EXPRESS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image-container">
+              <img src="./media/project7.jpg" class="project-image" alt="WMS" />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">انلاین شاپ</h3>
+              <p style="color: #aaa; font-size: 0.9rem">
+                سامانه تحت وب برای مدیریت محصولات و انبارداری هوشمند و گزارشات
+                مالی.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">NODEJS</span>
+                <span class="tech-tag">EXPRESS</span>
+                <span class="tech-tag">Postgres</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image-container">
+              <img
+                src="./media/project4.jpg"
+                class="project-image"
+                alt="Movie"
+              />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">جستجوی فیلم</h3>
+              <p style="color: #aaa; font-size: 0.9rem">
+                وبسایت معرفی و تریلر فیلم‌ها.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">JS</span>
+                <span class="tech-tag">API</span>
               </div>
             </div>
           </div>
@@ -937,41 +1005,36 @@
       </div>
     </section>
 
-    <!-- بخش تماس با من -->
+    <!-- تماس -->
     <section id="contact">
       <div class="container">
         <h2 class="section-title">تماس با من</h2>
         <div class="contact-container">
-          <div class="contact-info">
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-details">
-                <h3>ایمیل</h3>
-                <p>amir.m.jvd.1.1@gmail.com</p>
-              </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope contact-icon"></i>
+            <div class="contact-details">
+              <h3>پست الکترونیک</h3>
+              <p>amir.m.jvd.1.1@gmail.com</p>
             </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fab fa-telegram"></i>
-              </div>
-              <div class="contact-details">
-                <h3>تلگرام</h3>
-                <p>@Amirmjavadzadeh</p>
-              </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fab fa-telegram contact-icon"></i>
+            <div class="contact-details">
+              <h3>تلگرام</h3>
+              <p>@Amirmjavadzadeh</p>
             </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fab fa-github"></i>
-              </div>
-              <div class="contact-details">
-                <h3>گیت‌هاب</h3>
-                <p>https://github.com/AmirMJvd</p>
-              </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fab fa-github contact-icon"></i>
+            <div class="contact-details">
+              <h3>گیت‌هاب</h3>
+              <p>AmirMJvd</p>
             </div>
           </div>
         </div>
+
         <div class="social-links">
           <a href="https://github.com/AmirMJvd" class="social-link"
             ><i class="fab fa-github"></i
@@ -988,66 +1051,46 @@
 
     <!-- فوتر -->
     <footer>
-      <div class="container">
-        <p>© 2025 طراحی شده توسط امیر محمد جوادزاده</p>
-      </div>
+      <p>
+        طراحی شده توسط امیر محمد جوادزاده
+        |
+        2025
+      </p>
+      <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.6">
+        Game Over. Insert Coin to Continue.
+      </p>
     </footer>
 
-    <!-- اسکریپت‌های جاوااسکریプト -->
     <script>
-      // منوی موبایل
       const menuToggle = document.getElementById("menuToggle");
       const navLinks = document.getElementById("navLinks");
+      const icon = menuToggle.querySelector("i");
 
       menuToggle.addEventListener("click", () => {
         navLinks.classList.toggle("active");
+        if (navLinks.classList.contains("active")) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        }
       });
 
-      // بستن منو با کلیک روی لینک‌ها
       document.querySelectorAll(".nav-links a").forEach((link) => {
         link.addEventListener("click", () => {
           navLinks.classList.remove("active");
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
         });
       });
 
-      // فرم تماس
-      document
-        .getElementById("contactForm")
-        ?.addEventListener("submit", function (e) {
-          e.preventDefault();
-          alert("پیام شما با موفقیت ارسال شد!");
-          this.reset();
-        });
-
-      // انیمیشن اسکرول
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
-
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 70,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-
-      // حذف پس زمینه سفید از عکس پروفایل
-      function removeWhiteBackground() {
+      window.addEventListener("load", () => {
         const profileImg = document.querySelector(".profile-image");
         if (profileImg) {
-          profileImg.style.mixBlendMode = "multiply";
-          profileImg.style.backgroundColor = "transparent";
+          profileImg.style.mixBlendMode = "normal";
         }
-      }
-
-      // اجرای تابع پس از لود صفحه
-      window.addEventListener("load", removeWhiteBackground);
+      });
     </script>
   </body>
 </html>
